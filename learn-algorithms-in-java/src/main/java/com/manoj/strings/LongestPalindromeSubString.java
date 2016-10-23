@@ -1,28 +1,36 @@
 package com.manoj.strings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LongestPalindromeSubString {
-  public String longestPalindrome(final String s) {
-    if (s == null || s.length() <= 1)
-      return s;
+	public String longestPalindrome(final String s) {
+		if (s == null || s.length() <= 1)
+			return s;
 
-    int len = s.length();
-    int maxLen = 1;
-    boolean[][] dp = new boolean[len][len];
+		int len = s.length();
+		int maxLen = 1;
+		boolean[][] dp = new boolean[len][len];
 
-    String longest = null;
-    for (int l = 0; l < s.length(); l++) {
-      for (int i = 0; i < len - l; i++) {
-        int j = i + l;
-        if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1])) {
-          dp[i][j] = true;
-
-          if (j - i + 1 > maxLen) {
-            maxLen = j - i + 1;
-            longest = s.substring(i, j + 1);
-          }
-        }
-      }
-    }
-    return longest;
-  }
+		String longest = null;
+		List<String> stringList = new ArrayList<String>();
+		for (int index = 0; index < s.length(); index++) {
+			for (int i = 0; i < len - index; i++) {
+				int j = i + index;
+				if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || dp[i + 1][j - 1])) {
+					dp[i][j] = true;
+					System.out.println("i\t" + i + " j\t" + j + " index\t" + index);
+					if (j - i + 1 > maxLen) {
+						maxLen = j - i + 1;
+						longest = s.substring(i, j + 1);
+					}
+					if (j - i + 1 == maxLen) {
+						maxLen = j - i + 1;
+						stringList.add(s.substring(i, j + 1));
+					}
+				}
+			}
+		}
+		return longest;
+	}
 }
