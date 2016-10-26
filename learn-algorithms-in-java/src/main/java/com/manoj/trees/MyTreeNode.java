@@ -6,6 +6,7 @@ public class MyTreeNode<T extends Comparable<T>> {
   private int level;
   private String name;
   private MyTreeNode<T> right;
+  private MyTreeNode<T> parent;
 
   public MyTreeNode(final T data, final String name) {
     this.data = data;
@@ -55,5 +56,13 @@ public class MyTreeNode<T extends Comparable<T>> {
   @Override
   public String toString() {
     return name + " has the key " + data + " is at level " + level;
+  }
+
+  public MyTreeNode<T> getParent() {
+    return parent;
+  }
+
+  public void setParent(MyTreeNode<T> parent) {
+    this.parent = parent;
   }
 }

@@ -2,32 +2,26 @@ package com.manoj.strings;
 
 public class MakeStringPalindrome {
   public String palindrome(final String baseString) {
-
-    char[] input = baseString.toCharArray();
-
     int start = 0;
-    int end = input.length - 1;
-
-    if (isPalindrome(input, start, end))
+    int end = baseString.length() - 1;
+    if (isPalindrome(baseString, start, end))
       return "";
     else {
       start++;
       while (start < end) {
-        if (isPalindrome(input, start, end)) {
+        if (isPalindrome(baseString, start, end)) {
           break;
         }
         start++;
-
       }
-      char[] toReturn = new char[start];
-      for (int i = 0; i < toReturn.length; i++) {
-        toReturn[i] = input[--start];
-        // start--;
+      // System.out.println("start value us " + start);
+      int loopEnd = start;
+      StringBuilder str = new StringBuilder();
+      for (int i = 0; i < loopEnd; i++) {
+        str.append(baseString.charAt(--start));
       }
-      return new String(toReturn);
-
+      return str.toString();
     }
-
   }
 
   public String leastPalindrome(final String baseString) {
@@ -40,10 +34,10 @@ public class MakeStringPalindrome {
     }
   }
 
-  public boolean isPalindrome(final char[] input, int start, int end) {
+  public boolean isPalindrome(final String input, int start, int end) {
     boolean isPalindrome = true;
     while (start < end) {
-      if (input[start] != input[end]) {
+      if (input.charAt(start) != input.charAt(end)) {
         isPalindrome = false;
         break;
       }
