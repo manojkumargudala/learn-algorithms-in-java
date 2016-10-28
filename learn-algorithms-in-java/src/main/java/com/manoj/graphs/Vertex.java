@@ -1,78 +1,95 @@
 package com.manoj.graphs;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Vertex {
 
-	private ArrayList<Edge> neighborhood;
-	private String label;
-	private boolean isVisted;
+  private final ArrayList<Edge> neighborhood;
+  private final String label;
+  private boolean isVisted;
 
-	public Vertex(String label) {
-		this.label = label;
-		this.neighborhood = new ArrayList<Edge>();
-		this.setVisted(false);
-	}
+  public Vertex(final String label) {
+    this.label = label;
+    this.neighborhood = new ArrayList<Edge>();
+    this.setVisted(false);
+  }
 
-	public void addNeighbor(Edge edge) {
-		if (this.neighborhood.contains(edge)) {
-			return;
-		}
+  public void addNeighbor(final Edge edge) {
+    if (this.neighborhood.contains(edge)) {
+      return;
+    }
 
-		this.neighborhood.add(edge);
-	}
+    this.neighborhood.add(edge);
+  }
 
-	public boolean containsNeighbor(Edge other) {
-		return this.neighborhood.contains(other);
-	}
+  public boolean containsNeighbor(final Edge other) {
+    return this.neighborhood.contains(other);
+  }
 
-	public Edge getNeighbor(int index) {
-		return this.neighborhood.get(index);
-	}
+  public Edge getNeighbor(final int index) {
+    return this.neighborhood.get(index);
+  }
 
-	Edge removeNeighbor(int index) {
-		return this.neighborhood.remove(index);
-	}
+  Edge removeNeighbor(final int index) {
+    return this.neighborhood.remove(index);
+  }
 
-	public void removeNeighbor(Edge e) {
-		this.neighborhood.remove(e);
-	}
+  public void removeNeighbor(final Edge e) {
+    this.neighborhood.remove(e);
+  }
 
-	public int getNeighborCount() {
-		return this.neighborhood.size();
-	}
+  public int getNeighborCount() {
+    return this.neighborhood.size();
+  }
 
-	public String getLabel() {
-		return this.label;
-	}
+  public String getLabel() {
+    return this.label;
+  }
 
-	public String toString() {
-		return "Vertex " + label;
-	}
+  @Override
+  public String toString() {
+    return "Vertex " + label;
+  }
 
-	public int hashCode() {
-		return this.label.hashCode();
-	}
+  @Override
+  public int hashCode() {
+    return this.label.hashCode();
+  }
 
-	public boolean equals(Object other) {
-		if (!(other instanceof Vertex)) {
-			return false;
-		}
+  @Override
+  public boolean equals(final Object other) {
+    if (!(other instanceof Vertex)) {
+      return false;
+    }
 
-		Vertex v = (Vertex) other;
-		return this.label.equals(v.label);
-	}
+    Vertex v = (Vertex) other;
+    return this.label.equals(v.label);
+  }
 
-	public ArrayList<Edge> getNeighbors() {
-		return new ArrayList<Edge>(this.neighborhood);
-	}
+  public ArrayList<Edge> getNeighbors() {
+    return new ArrayList<Edge>(this.neighborhood);
+  }
 
-	public boolean isVisted() {
-		return isVisted;
-	}
+  public List<Vertex> getNeighborVertices() {
+    List<Vertex> vertices = new ArrayList<Vertex>();
+    for (Edge edge : getNeighbors()) {
+      if (edge.getOne().equals(this)) {
+        vertices.add(edge.getTwo());
+      } else {
+        vertices.add(edge.getOne());
+      }
+    }
 
-	public void setVisted(boolean isVisted) {
-		this.isVisted = isVisted;
-	}
+    return vertices;
+  }
+
+  public boolean isVisted() {
+    return isVisted;
+  }
+
+  public void setVisted(final boolean isVisted) {
+    this.isVisted = isVisted;
+  }
 
 }
