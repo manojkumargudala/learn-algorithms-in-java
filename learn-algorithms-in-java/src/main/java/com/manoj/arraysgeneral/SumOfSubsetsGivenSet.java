@@ -11,7 +11,7 @@ public class SumOfSubsetsGivenSet {
   }
 
   private void subsetSums(final int arr[], final int l, final int r, final int sum) {
-    System.out.println("l value is " + l + " r value is " + r);
+    // System.out.println("l value is " + l + " r value is " + r);
     if (l > r) {
       System.out.print(sum + "\t");
       arrayLst.add(sum);

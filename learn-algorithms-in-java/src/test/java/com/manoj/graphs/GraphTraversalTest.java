@@ -31,26 +31,32 @@ public class GraphTraversalTest extends InitializeGraph {
       myVertices[i] = new Vertex("label" + i);
       mygraph.addVertex(myVertices[i], true);
     }
-    mygraph.addEdge(myVertices[1], myVertices[2]);
-    mygraph.addEdge(myVertices[1], myVertices[3]);
-    mygraph.addEdge(myVertices[1], myVertices[4]);
+    mygraph.addEdge(myVertices[1], myVertices[2], 2);
+    mygraph.addEdge(myVertices[1], myVertices[3], 3);
+    mygraph.addEdge(myVertices[1], myVertices[4], 4);
 
-    mygraph.addEdge(myVertices[2], myVertices[5]);
-    mygraph.addEdge(myVertices[2], myVertices[6]);
+    mygraph.addEdge(myVertices[2], myVertices[5], 5);
+    mygraph.addEdge(myVertices[2], myVertices[6], 6);
+    mygraph.addEdge(myVertices[2], myVertices[9], 8);
 
-    mygraph.addEdge(myVertices[4], myVertices[7]);
-    mygraph.addEdge(myVertices[4], myVertices[8]);
 
-    mygraph.addEdge(myVertices[5], myVertices[9]);
-    mygraph.addEdge(myVertices[5], myVertices[10]);
+    mygraph.addEdge(myVertices[4], myVertices[7], 10);
+    mygraph.addEdge(myVertices[4], myVertices[8], 15);
+    mygraph.addEdge(myVertices[8], myVertices[1], 1);
+    mygraph.addEdge(myVertices[6], myVertices[9], 51);
 
-    mygraph.addEdge(myVertices[7], myVertices[11]);
-    mygraph.addEdge(myVertices[7], myVertices[12]);
+    mygraph.addEdge(myVertices[5], myVertices[9], 101);
+    mygraph.addEdge(myVertices[5], myVertices[10], 23);
+
+    mygraph.addEdge(myVertices[7], myVertices[11], 26);
+    mygraph.addEdge(myVertices[7], myVertices[12], 16);
 
     grphTra.depthFirstSearchTraverel(myVertices[1]);
 
     mygraph.resetVistedFlags();
     System.out.println("\n\n\n");
     grphTra.breadthFirstSearchTraverel(myVertices[1]);
+    KrushkalAlgorithm ksmst = new KrushkalAlgorithm();
+    ksmst.applyKrushalAlgortih(mygraph.getEdges());
   }
 }
