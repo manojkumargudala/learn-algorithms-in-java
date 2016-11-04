@@ -1,11 +1,14 @@
 package com.manoj.graphs;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.Test;
 
 public class PrimsAlgorithimTest {
 
   @Test
-  public void testBaseKruskalAlgorithm() {
+  public void testBasePrimsAlgorithm() {
     Graph mygraph = new Graph();
     Vertex[] myVertices = new Vertex[13];
     for (int i = 0; i < myVertices.length; i++) {
@@ -34,12 +37,19 @@ public class PrimsAlgorithimTest {
 
     System.out.println("\n\n\n");
 
-    PrimsAlgorithm ksmst = new PrimsAlgorithm();
-    ksmst.primsAlgorithmMst(myVertices[1], myVertices.length);
+    PrimsAlgorithm prmstAlgo = new PrimsAlgorithm();
+    List<Edge> mstEdgesList = prmstAlgo.primsAlgorithmMst(myVertices[1], myVertices.length);
+    Collections.sort(mstEdgesList);
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    for (Edge edge : mstEdgesList) {
+      System.out.println(edge);
+    }
   }
 
   @Test
-  public void testKruskalAlgorithDefinded() {
+  public void testPrimsAlgorithDefinded() {
     // for graph view go to
     // https://en.wikipedia.org/wiki/Minimum_spanning_tree#/media/File:Minimum_spanning_tree.svg
     Graph mygraph = new Graph();
@@ -79,7 +89,15 @@ public class PrimsAlgorithimTest {
 
     mygraph.addEdge(myVertices[8], myVertices[9], 2);
     mygraph.addEdge(myVertices[9], myVertices[10], 3);
-    PrimsAlgorithm ksmst = new PrimsAlgorithm();
-    ksmst.primsAlgorithmMst(myVertices[1], mygraph.getEdges().size());
+    PrimsAlgorithm prmstAlgo = new PrimsAlgorithm();
+    List<Edge> mstEdgesList = prmstAlgo.primsAlgorithmMst(myVertices[1], mygraph.getEdges().size());
+    Collections.sort(mstEdgesList);
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    for (Edge edge : mstEdgesList) {
+      System.out.println(edge);
+    }
+    // prmstAlgo.primsAlgorithmMst(mstEdgesList);
   }
 }
