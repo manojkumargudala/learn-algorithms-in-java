@@ -1,99 +1,94 @@
 package com.manoj.backtracking;
 
-import com.manoj.common.PrinterFunctions;
-
 public class WordMatrix {
-  public int[][] solution;
-  int path = 1;
+	public int[][] solution;
+	int path = 1;
+	int matrixLength;
 
-  // initialize the solution matrix in constructor.
-  public WordMatrix(final int N) {
-    solution = new int[N][N];
-    for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
-        solution[i][j] = 0;
-      }
-    }
-  }
+	// initialize the solution matrix in constructor.
+	public WordMatrix(final int matrixLength) {
+		this.matrixLength = matrixLength;
+		solution = new int[matrixLength][matrixLength];
+		for (int i = 0; i < matrixLength; i++) {
+			for (int j = 0; j < matrixLength; j++) {
+				solution[i][j] = 0;
+			}
+		}
+	}
 
-  public boolean searchWord(final char[][] matrix, final String word) {
-    int N = matrix.length;
-    for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
-        if (search(matrix, word, i, j, 0, N)) {
-          System.out.print("a\t");
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+	public boolean searchWord(final char[][] matrix, final String word) {
+		int N = matrix.length;
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (search(matrix, word, i, j, 0)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
-  public boolean search(final char[][] matrix, final String word, final int row, final int col,
-      final int index, final int N) {
-    System.out.print("b\t");
-    // check if current cell not already used or character in it is not not
+	public boolean search(final char[][] matrix, final String word, final int row, final int col, final int index) {
+		System.out.print("b\t");
+		// check if current cell not already used or character in it is not not
 
-    if (solution[row][col] != 0 || word.charAt(index) != matrix[row][col]) {
-      return false;
-    }
+		if (solution[row][col] != 0 || word.charAt(index) != matrix[row][col]) {
+			return false;
+		}
 
-    if (index == word.length() - 1) {
-      // word is found, return true
-      solution[row][col] = path++;
-      return true;
-    }
+		if (index == word.length() - 1) {
+			// word is found, return true
+			solution[row][col] = path++;
+			return true;
+		}
 
-    // mark the current cell as 1
-    solution[row][col] = path++;
-    // check if cell is already used
+		// mark the current cell as 1
+		solution[row][col] = path++;
+		// check if cell is already used
 
-    if (row + 1 < N && search(matrix, word, row + 1, col, index + 1, N)) { // go down
-      return true;
-    }
-    if (row - 1 >= 0 && search(matrix, word, row - 1, col, index + 1, N)) { // go up
-      return true;
-    }
-    if (col + 1 < N && search(matrix, word, row, col + 1, index + 1, N)) { // go right
-      return true;
-    }
-    if (col - 1 >= 0 && search(matrix, word, row, col - 1, index + 1, N)) { // go left
-      return true;
-    }
-    if (row - 1 >= 0 && col + 1 < N && search(matrix, word, row - 1, col + 1, index + 1, N)) {
-      // go diagonally up right
-      return true;
-    }
-    if (row - 1 >= 0 && col - 1 >= 0 && search(matrix, word, row - 1, col - 1, index + 1, N)) {
-      // go diagonally up left
-      return true;
-    }
-    if (row + 1 < N && col - 1 >= 0 && search(matrix, word, row + 1, col - 1, index + 1, N)) {
-      // go diagonally down left
-      return true;
-    }
-    if (row + 1 < N && col + 1 < N && search(matrix, word, row + 1, col + 1, index + 1, N)) {
-      // go diagonally down right
-      return true;
-    }
+		if (isSafe(row + 1) && search(matrix, word, row + 1, col, index + 1)) { // go
+			// down
+			return true;
+		}
+		if (isSafe(row - 1) && search(matrix, word, row - 1, col, index + 1)) { // go
+																				// up
+			return true;
+		}
+		if (isSafe(col + 1) && search(matrix, word, row, col + 1, index + 1)) { // go
+			// right
+			return true;
+		}
+		if (isSafe(col - 1) && search(matrix, word, row, col - 1, index + 1)) { // go
+																				// left
+			return true;
+		}
+		if (isSafe(row - 1) && isSafe(col + 1) && search(matrix, word, row - 1, col + 1, index + 1)) {
+			// go diagonally up right
+			return true;
+		}
+		if (isSafe(row - 1) && isSafe(col - 1) && search(matrix, word, row - 1, col - 1, index + 1)) {
+			// go diagonally up left
+			return true;
+		}
+		if (isSafe(row + 1) && isSafe(col - 1) && search(matrix, word, row + 1, col - 1, index + 1)) {
+			// go diagonally down left
+			return true;
+		}
+		if (isSafe(row + 1) && isSafe(col + 1) && search(matrix, word, row + 1, col + 1, index + 1)) {
+			// go diagonally down right
+			return true;
+		}
 
-    // if none of the option works out, BACKTRACK and return false
-    solution[row][col] = 0;
-    path--;
-    return false;
-  }
+		// if none of the option works out, BACKTRACK and return false
+		solution[row][col] = 0;
+		path--;
+		return false;
+	}
 
-
-  public static void main(final String[] args) {
-    char[][] matrix = {{'t', 'z', 'x', 'c', 'd'}, {'a', 'h', 'n', 'z', 'x'},
-        {'h', 'w', 'o', 'i', 'o'}, {'o', 'r', 'n', 'r', 'n'}, {'a', 'b', 'r', 'i', 'n'}};
-    PrinterFunctions.printArray(matrix);
-    System.out.println("\n");
-    WordMatrix w = new WordMatrix(matrix.length);
-    if (w.searchWord(matrix, "rnrn")) {
-      PrinterFunctions.printArray(w.solution);
-    } else {
-      System.out.println("NO PATH FOUND");
-    }
-  }
+	public boolean isSafe(int matrixIndex) {
+		if (matrixIndex >= 0 && matrixIndex < matrixLength) {
+			return true;
+		}
+		return false;
+	}
 }
