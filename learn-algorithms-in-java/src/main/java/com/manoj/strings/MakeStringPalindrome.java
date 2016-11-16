@@ -51,16 +51,16 @@ public class MakeStringPalindrome {
   public static void main(final String[] args) {
 
     MakeStringPalindrome test = new MakeStringPalindrome();
-    System.out.println(test.leastPalindrome("NITI"));
-    System.out.println(test.leastPalindrome("aaab"));
-
-    System.out.println(test.leastPalindrome("baaa"));
-
-    System.out.println(test.palindrome("abb"));
-    System.out.println(test.palindrome("abc"));
-    System.out.println(test.palindrome("abcde"));
+    // System.out.println(test.leastPalindrome("NITI"));
+    // System.out.println(test.leastPalindrome("aaab"));
+    //
+    // System.out.println(test.leastPalindrome("baaa"));
+    //
+    // System.out.println(test.palindrome("abb"));
+    // System.out.println(test.palindrome("abc"));
+    // System.out.println(test.palindrome("abcde"));
     System.out.println(test.palindrome("abcaba"));
-    System.out.println(test.palindrome("system"));
+    // System.out.println(test.palindrome("system"));
 
 
 

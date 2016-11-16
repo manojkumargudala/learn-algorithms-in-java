@@ -19,7 +19,7 @@ public class BinaryTreeTest {
     theTree.addNode(10, "Customer");
     theTree.addNode(30, "Secretary");
     theTree.addNode(75, "Sales Manager");
-    theTree.addNode(85, "Salesman 1");    
+    theTree.addNode(85, "Salesman 1");
     theTree.addNode(60, "Salesman 1");
     theTree.addNode(65, "Sales Manager");
     PrintTreeData.printNode(theTree.root);
@@ -69,5 +69,18 @@ public class BinaryTreeTest {
     theTree.delete(50);
     Assert.assertEquals(theTree.findNode(50), null);
     PrintTreeData.printNode(theTree.root);
+  }
+
+  @Test
+  public void printTraveseal() {
+    System.out.println("***** INORDER TRAVERSAL ************");
+    theTree.inOrderTraverseTree(theTree.findNode(50));
+
+    System.out.println("***** Post Order TRAVERSAL ************");
+    theTree.postOrderTraverseTree(theTree.findNode(50));
+
+    System.out.println("***** PRE ORDER TRAVERSAL ************");
+    theTree.preorderTraverseTree(theTree.findNode(50));
+
   }
 }

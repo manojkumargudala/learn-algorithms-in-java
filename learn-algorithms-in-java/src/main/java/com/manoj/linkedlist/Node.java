@@ -1,29 +1,33 @@
 package com.manoj.linkedlist;
 
-public class Node {
-  private char data;
-  private Node next;
+public class Node<T> {
+  private T data;
+  private Node<T> next;
 
-  Node(final char d) {
+  Node(final T d) {
     setData(d);
     setNext(null);
   }
 
-  public char getData() {
+  public T getData() {
     return data;
   }
 
-  public void setData(final char data) {
+  public void setData(final T data) {
     this.data = data;
   }
 
-  public Node getNext() {
+  public Node<T> getNext() {
     return next;
   }
 
-  public void setNext(final Node next) {
+  public void setNext(final Node<T> next) {
     this.next = next;
   }
 
+  @Override
+  public String toString() {
+    return "Node data is " + data;
+  }
 
 }
