@@ -1,4 +1,4 @@
-package com.manoj.sortings;
+package com.manoj.sortings.insertionsort;
 
 import com.manoj.common.PrinterFunctions;
 
