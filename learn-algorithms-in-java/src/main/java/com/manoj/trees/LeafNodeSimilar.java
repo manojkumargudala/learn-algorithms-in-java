@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class LeafNodeSimilar {
-//https://leetcode.com/problems/leaf-similar-trees/
 	public boolean leafSimilar(final TreeNode root1, final TreeNode root2) {
 		List<Integer> leafValues = new ArrayList<Integer>();
 		postOrderTraverseTree(root1, leafValues);
