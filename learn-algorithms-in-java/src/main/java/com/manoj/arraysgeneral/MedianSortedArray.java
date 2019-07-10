@@ -1,4 +1,4 @@
-package com.manoj.arrays;
+package com.manoj.arraysgeneral;
 
 import com.manoj.common.PrinterFunctions;
 
