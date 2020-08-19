@@ -18,5 +18,11 @@ public class RunningSum {
 		RunningSum runn = new RunningSum();
 		int[] test = { 9, 4, 3, 1, 7, 12, 6 };
 		PrinterFunctions.printArray(runn.runningSum(test));
+		int[] test1 = {};
+		PrinterFunctions.printArray(runn.runningSum(test1));
+		int[] test2 = { 1 };
+		PrinterFunctions.printArray(runn.runningSum(test2));
+		int[] test3 = { 1, 2 };
+		PrinterFunctions.printArray(runn.runningSum(test3));
 	}
 }

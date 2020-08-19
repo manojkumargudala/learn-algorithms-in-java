@@ -48,9 +48,9 @@ public class PowerFulIntegers {
 	public static void main(final String[] args) {
 		PowerFulIntegers powerFulIntegers = new PowerFulIntegers();
 		List<Integer> ints = powerFulIntegers.powerfulIntegers(1, 1, 1000000);
-		// System.out.println(ints);
+		System.out.println(ints);
 		ints = powerFulIntegers.powerfulIntegers1(1, 1, 1000000);
-		// System.out.println(ints);
+		System.out.println(ints);
 
 	}
 }

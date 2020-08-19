@@ -10,8 +10,6 @@ public class MaxSellingPricesSingleTransaction {
 		int sell = 0;
 		int buyIndex = -1;
 		int sellIndex = -1;
-		int oldBuy = 0;
-		int oldSell = 0;
 		for (int i = 0; i < prices.length; i++) {
 			if (buy > prices[i]) {
 				buy = prices[i];

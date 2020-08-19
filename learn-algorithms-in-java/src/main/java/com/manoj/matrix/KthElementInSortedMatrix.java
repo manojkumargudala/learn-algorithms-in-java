@@ -19,6 +19,7 @@ public class KthElementInSortedMatrix {
 
 		KthElementInSortedMatrix kthElementInSortedMatrix = new KthElementInSortedMatrix();
 		System.out.println(kthElementInSortedMatrix.kthSmallest(matrix, 2));
+		System.out.println(kthElementInSortedMatrix.kthSmallest(matrixq, 2));
 
 	}
 }

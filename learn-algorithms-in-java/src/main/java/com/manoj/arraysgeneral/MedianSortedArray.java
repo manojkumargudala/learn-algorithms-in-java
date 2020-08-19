@@ -3,6 +3,7 @@ package com.manoj.arraysgeneral;
 import com.manoj.common.PrinterFunctions;
 
 public class MedianSortedArray {
+	// https://leetcode.com/problems/median-of-two-sorted-arrays/
 
 	public static double findMedianSortedArrays(final int[] nums1, final int[] nums2) {
 		int[] finalArray = new int[nums1.length + nums2.length];

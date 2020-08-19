@@ -1,10 +1,7 @@
 package com.manoj.arraysgeneral;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class ContainsDuplicates {
-	
+
 	public boolean containsDuplicate(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
@@ -15,9 +12,9 @@ public class ContainsDuplicates {
 		}
 		return false;
 	}
+
 	public boolean containsDuplicate1(int[] nums) {
-		Set<Integer> sets= new HashSet<Integer>();
-		//sets.a
+		// sets.a
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
 				if (nums[i] == nums[j]) {
@@ -27,6 +24,7 @@ public class ContainsDuplicates {
 		}
 		return false;
 	}
+
 	public static void main(String[] args) {
 		ContainsDuplicates containsDuplicates = new ContainsDuplicates();
 		int[] nums = { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 };
